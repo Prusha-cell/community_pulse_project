@@ -3,6 +3,8 @@ from flask import Flask
 from config import config_by_name
 from .routers.questions import questions_bp
 from .routers.responses import response_bp
+from .routers.categories import categories_bp
+
 from app.models import db
 from flask_migrate import Migrate
 import os
@@ -18,7 +20,9 @@ def create_app(config_name=None):
     db.init_app(app)
     migrate = Migrate()
     migrate.init_app(app, db)
+
     app.register_blueprint(questions_bp)
     app.register_blueprint(response_bp)
+    app.register_blueprint(categories_bp)
 
     return app
