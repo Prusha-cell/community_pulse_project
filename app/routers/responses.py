@@ -30,7 +30,8 @@ def add_response():
         return jsonify({'message': "Вопрос не найден"}), 404
     response = Response(
         question_id=question.id,
-        is_agree=data['is_agree']
+        is_agree=data['is_agree'],
+        text=data['text']
     )
     db.session.add(response)
 
